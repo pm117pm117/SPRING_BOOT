@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.domain.Article;
 import com.example.demo.model.service.AddArticleRequest;
 import com.example.demo.model.service.BlogService;
@@ -15,13 +16,8 @@ public class BlogRestController {
     
     @PostMapping("/api/articles")
     public ResponseEntity<Article> addArticle(@ModelAttribute AddArticleRequest request) {
-    Article saveArticle = blogService.save(request);
-    return ResponseEntity.status(HttpStatus.CREATED)
-    .body(saveArticle);
-    }
-
-    @GetMapping("/favicon.ico")
-    public void favicon() {
-    // 아무 작업도 하지 않음
+        Article saveArticle = blogService.save(request);
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body(saveArticle);
     }
 }
